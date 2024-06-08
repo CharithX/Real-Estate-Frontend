@@ -3,6 +3,9 @@ import ListPage from "./Pages/ListPage/ListPage";
 import Layout from "./Pages/Layout/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SinglePage from "./Pages/Singlepage/Singlepage";
+import Profile from "./Pages/Profile/Profile";
+import Login from "./Pages/Login/Login";
+import Register from "./Pages/Register/Register";
 
 function App() {
 
@@ -23,18 +26,18 @@ function App() {
           path:"/:id",
           element:<SinglePage/>
         },
-        // {
-        //   path:"/profile",
-        //   element:<ProfilePage/>
-        // },
-        // {
-        //   path:"/login",
-        //   element:<Login/>
-        // },
-        // {
-        //   path:"/register",
-        //   element:<Register/>
-        // }
+        {
+          path:"/profile",
+          element:<Profile/>
+        },
+        {
+          path:"/login",
+          element:<Login/>
+        },
+        {
+          path:"/register",
+          element:<Register/>
+        }
       ]
     }
   ]);
