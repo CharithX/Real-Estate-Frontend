@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.scss";
-import axios from "axios";
+import APIRequest from "../../lib/APIRequest";
 import { useState } from "react";
 
 function Register() {
-  const [error , setError] = useState("")
-
-
+  const [error, setError] = useState("")
+    const [isLoading, setIsLoading] = useState(false);
+   
+  const naviagte = useNavigate()
   const handleSubmit = async (e) => {
+    setIsLoading(true)
      e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -17,20 +19,25 @@ function Register() {
     const password = formData.get("password");
     
     console.log(username, email, password)
+
     
 
-    try {
-      const res = await axios.post("http://localhost:8800/api/auth/register", {
+    try { 
+     const res = await APIRequest.post("/auth/register", {
         username,
         email,
         password,  
       });
-      console.log(res) 
+      naviagte("/login")
+      console.log(res); 
     }
       catch (error) {
       console.log(error)
-      //setError
-      }
+      setError(error.response.data.message)
+    }
+    finally {
+      isLoading(false);
+    }
     
     
   }; 
@@ -40,7 +47,7 @@ function Register() {
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
           <h1>Create an Account</h1>
-          <input name="username" type="text" placeholder="Username" required />
+          <input name="username" type="text" placeholder="Username" required  minLength={3} maxLength={15}/>
           <input name="email" type="email" placeholder="Email" required />
           <input
             name="password"
@@ -48,7 +55,8 @@ function Register() {
             placeholder="Password"
             required
           />
-          <button>Register</button>
+          <button disabled={isLoading}>Register</button>
+          {error && <span>{error}</span>}
           <Link to="/login">Do you have an account?</Link>
         </form>
       </div>
