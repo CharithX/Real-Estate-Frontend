@@ -9,7 +9,7 @@ import { RequireAuth } from "./Pages/Layout/Layout";
 import { Layout } from "./Pages/Layout/Layout";
 import ProfileUpdate from "./Pages/ProfileUpdate/ProfileUpdate";
 import NewPostPage from "./Pages/NewPostPage/NewPostPage";
-import { singlePageLoader } from "./lib/loader";
+import { listPageLoader, singlePageLoader } from "./lib/loader";
 
 function App() {
 
@@ -25,6 +25,7 @@ function App() {
         {
           path: "/list",
           element: <ListPage />,
+          loader: listPageLoader,
         },
         {
           path: "/:id",
