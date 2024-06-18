@@ -7,6 +7,9 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import { RequireAuth } from "./Pages/Layout/Layout";
 import { Layout } from "./Pages/Layout/Layout";
+import ProfileUpdate from "./Pages/ProfileUpdate/ProfileUpdate";
+import NewPostPage from "./Pages/NewPostPage/NewPostPage";
+import { singlePageLoader } from "./lib/loader";
 
 function App() {
 
@@ -26,6 +29,7 @@ function App() {
         {
           path: "/:id",
           element: <SinglePage />,
+          loader: singlePageLoader,
         },
         {
           path: "/login",
@@ -45,6 +49,14 @@ function App() {
         {
           path: "/profile",
           element: <Profile />,
+        },
+        {
+          path: "/profile/update",
+          element: <ProfileUpdate />,
+        },
+        {
+          path: "/add",
+          element: <NewPostPage />,
         },
       ],
     },
