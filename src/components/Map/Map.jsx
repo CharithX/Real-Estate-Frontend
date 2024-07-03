@@ -10,9 +10,9 @@ function Map({ items }) {
       center={
         items.length === 1
           ? [items[0].latitude, items[0].longitude]
-          : [52.4797, -1.90269]
+          : [7.8731, 80.7718]
       }
-      zoom={7}
+      zoom={8}
       scrollWheelZoom={false}
       className="map"
     >
