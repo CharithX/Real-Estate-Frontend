@@ -22,10 +22,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build React app
-      run: |
-        npm install
-        npm run dev
 
     - name: Docker build
       run: |
