@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const APIRequest = axios.create({
-  baseURL: "http://localhost:8800/api",
+  baseURL: "https://real-estate-backend-production-6094.up.railway.app/api",
   withCredentials: true,
 });
 

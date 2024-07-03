@@ -9,7 +9,7 @@ import { RequireAuth } from "./Pages/Layout/Layout";
 import { Layout } from "./Pages/Layout/Layout";
 import ProfileUpdate from "./Pages/ProfileUpdate/ProfileUpdate";
 import NewPostPage from "./Pages/NewPostPage/NewPostPage";
-import { listPageLoader, singlePageLoader } from "./lib/loader";
+import { listPageLoader, profilePageLoader, singlePageLoader } from "./lib/loader";
 
 function App() {
 
@@ -50,6 +50,7 @@ function App() {
         {
           path: "/profile",
           element: <Profile />,
+          loader: profilePageLoader,
         },
         {
           path: "/profile/update",
